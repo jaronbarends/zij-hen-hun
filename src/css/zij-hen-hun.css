@@ -1,0 +1,116 @@
+/*-- Start reset --*/
+	a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,input,ins,kbd,label,legend,li,mark form,menu,nav,object,ol,option,output,p,pre,q,ruby,s,samp,section,select,small,span,strike,strong,sub,summary,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;border:0;padding:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+	button,input[type=checkbox],input[type=image],input[type=radio],input[type=submit],label{cursor:pointer}
+	strong{font-weight:700}
+	em{font-style:italic}
+	.fList{list-style:none}
+	sub, sup {font-size: 0.8em;vertical-align:sub;}
+	sup { vertical-align: super;}
+/*-- End reset --*/
+
+html {
+	font-size: 62.5%;/* 10px */
+}
+
+body {
+	font-family: arial, Helvetica, sans-serif;
+	font-size: 1.6rem;
+	line-height: 1.5;
+	color: #666;
+}
+
+h2 {
+	font-size: 3.6rem;
+	font-weight: bold;
+	color: #666;
+}
+
+h2.zij::first-letter {
+	letter-spacing: 0.1em;
+}
+
+
+.o-content-width {
+	text-align: center;
+}
+
+.item {
+	display: inline-block;
+	margin: 0 2em;
+	vertical-align: top;
+}
+
+.image-container {
+	text-align: center;
+}
+
+.image-container img {
+	display: inline-block;
+	height: 380px;
+	width: auto;
+}
+
+.explanation {
+	margin: 0 auto;
+	max-width: 10em;
+	font-family: georgia, "times new roman", serif;
+	font-style: italic;
+}
+
+h2 span {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+h2 .zelfst-nw,
+h2 .bez-vnw,
+h2 .pers-vnw {
+	text-transform: uppercase;
+	font-size: 4.8rem;
+}
+
+.disclosed h2 .zelfst-nw,
+.disclosed h2 .bez-vnw,
+.disclosed h2 .pers-vnw {
+	text-transform: none;
+	font-size: 4.8rem;
+}
+
+.hinted .zelfst-nw,
+.disclosed .zelfst-nw {
+	-webkit-filter: sepia() saturate(4) hue-rotate(90deg);
+	filter: sepia() saturate(4) hue-rotate(90deg);
+}
+
+.hinted .bez-vnw,
+.disclosed .bez-vnw {
+	-webkit-filter: sepia() saturate(4) hue-rotate(150deg);
+	filter: sepia() saturate(4) hue-rotate(150deg);
+}
+
+.hinted .pers-vnw,
+.disclosed .pers-vnw {
+	-webkit-filter: sepia() saturate(4) hue-rotate(180deg);
+	filter: sepia() saturate(4) hue-rotate(180deg);
+}
+
+.glue {
+	/*overflow: hidden;*/
+	/*max-width: 0;*/
+	transition: font-size 0.3s ease-out;
+	font-size: 0;
+	font-weight: normal;
+	line-height: 0.9em;
+	color: #999;
+}
+
+.disclosed .glue {
+	/*max-width: 5em;*/
+	font-size: 2.8rem;
+}
+
+.disclose-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
