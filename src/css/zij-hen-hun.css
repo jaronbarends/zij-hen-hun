@@ -19,10 +19,21 @@ body {
 	color: #666;
 }
 
+.o-content-width {
+	min-height: 100vh;
+}
+
+h1 {
+	font-size: 6rem;
+	font-weight: bold;
+}
+
+h1,
 h2 {
+	color: #666;
 	font-size: 3.6rem;
 	font-weight: bold;
-	color: #666;
+	font-size: 4.8rem;
 }
 
 h2.zij::first-letter {
@@ -41,17 +52,28 @@ h2.zij::first-letter {
 }
 
 .item--small {
-	max-width: 10em;
+	max-width: 12em;
 }
 
 .image-container {
 	text-align: center;
+	/*height: 380px;*/
+}
+
+.image-container--stacked {
+	position: relative;
 }
 
 .image-container img {
 	display: inline-block;
 	height: 380px;
 	width: auto;
+}
+
+.image-container--stacked img {
+	position: absolute;	
+	top: 0;
+	left: 0;
 }
 
 
@@ -96,47 +118,79 @@ h2 .zelfst-nw,
 h2 .bez-vnw,
 h2 .pers-vnw {
 	text-transform: uppercase;
-	font-size: 4.8rem;
+	/*font-size: 4.8rem;*/
 }
 
 .disclosed h2 .zelfst-nw,
 .disclosed h2 .bez-vnw,
 .disclosed h2 .pers-vnw {
 	text-transform: none;
-	font-size: 4.8rem;
+	/*font-size: 4.8rem;*/
 }
 
-.hinted .zelfst-nw,
-.disclosed .zelfst-nw {
-	color: #0ba345;
+/* zinsdelen zelfde tint; bez vnw lichter */
+/*
+.onderwerp
+.mw-voorw
+(.mw-voorw-met-voorz)
+.ld-voorw*/
+
+
+
+
+.hinted .onderwerp,
+.disclosed .onderwerp {
+	color: #3a7951;/* green */
+}
+
+.hinted .lijdend-vw,
+.disclosed .lijdend-vw {
+	color: #5dafce;/* blue */
+}
+
+.hinted .medewerkend-vw,
+.disclosed .medewerkend-vw {
+	color: #b79470;/* brown */
+}
+
+.hinted .bijw-bepaling,
+.disclosed .bijw-bepaling {
+	color: #a488d1;/* purple */
+}
+
+
+
+.hinted img.onderwerp,
+.disclosed img.onderwerp {
+	/* green */
+	-webkit-filter: sepia() saturate(2) hue-rotate(90deg);
+	filter: sepia() saturate(2) hue-rotate(90deg);
+}
+
+.hinted img.medewerkend-vw,
+.disclosed img.medewerkend-vw {
+	/* orange */
+	-webkit-filter: sepia() saturate(2) hue-rotate(350deg);
+	filter: sepia() saturate(2) hue-rotate(350deg);
+}
+
+.hinted img.lijdend-vw,
+.disclosed img.lijdend-vw {
+	/* blue */
+	-webkit-filter: sepia() saturate(2) hue-rotate(150deg);
+	filter: sepia() saturate(2) hue-rotate(150deg);
+}
+
+.hinted img.bijw-bepaling,
+.disclosed img.bijw-bepaling {
+	/* blue */
+	-webkit-filter: sepia() saturate(2) hue-rotate(240deg);
+	filter: sepia() saturate(2) hue-rotate(240deg);
 }
 
 .hinted .bez-vnw,
 .disclosed .bez-vnw {
-	color: #1494c2;
-}
-
-.hinted .pers-vnw,
-.disclosed .pers-vnw {
-	color: #c67016;
-}
-
-.hinted img.zelfst-nw,
-.disclosed img.zelfst-nw {
-	-webkit-filter: sepia() saturate(4) hue-rotate(90deg);
-	filter: sepia() saturate(4) hue-rotate(90deg);
-}
-
-.hinted img.bez-vnw,
-.disclosed img.bez-vnw {
-	-webkit-filter: sepia() saturate(4) hue-rotate(150deg);
-	filter: sepia() saturate(4) hue-rotate(150deg);
-}
-
-.hinted img.pers-vnw,
-.disclosed img.pers-vnw {
-	-webkit-filter: sepia() saturate(4) hue-rotate(350deg);
-	filter: sepia() saturate(4) hue-rotate(350deg);
+	opacity: 0.5;
 }
 
 .glue {
@@ -146,12 +200,13 @@ h2 .pers-vnw {
 	font-size: 0;
 	font-weight: normal;
 	line-height: 0.9em;
-	color: #999;
+	color: #ccc;
 }
 
 .disclosed .glue {
 	/*max-width: 5em;*/
-	font-size: 2.8rem;
+	/*font-size: 2.8rem;*/
+	font-size: inherit;
 }
 
 .disclose-container {
