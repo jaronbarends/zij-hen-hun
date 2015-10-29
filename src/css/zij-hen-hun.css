@@ -46,17 +46,6 @@ h2.zij::first-letter {
 	letter-spacing: 0.1em;
 }
 
-nav {
-	margin-top: 1em;
-}
-
-nav .more {
-	padding: 0.5em 1em;
-	background: #ccc;
-	color: white;
-	text-decoration: none;
-}
-
 .rule {
 	margin: 1em auto;
 	font-family: georgia, serif;
@@ -68,36 +57,112 @@ nav .more {
 	font-weight: bold;
 }
 
+
+.toggle-container {
+	position: relative;
+}
+
+.toggle--example {
+	position: absolute;/* take out of flow */
+	z-index: 1;
+	display: block;
+	width: 100%;
+	transition: opacity 0.3s ease-out;
+}
+
+.disclosed .toggle--example {
+	opacity: 0;
+}
+
+.item-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: 600px;
+}
+
 .item {
-	display: inline-block;
+	opacity: 0;
+	/*display: inline-block;*/
+	display: flex;
+	flex-direction: column;
 	margin: 0 2em;
 	vertical-align: top;
+	transition: opacity 0.3s ease-out;
+}
+
+.disclosed .item,
+item.disclosed {
+	opacity: 1;
 }
 
 .item--small {
 	max-width: 13em;
 }
 
-.image-container {
-	text-align: center;
-	/*height: 380px;*/
+nav {
+	margin-top: 1em;
 }
 
-.image-container--stacked {
+nav .more {
+	padding: 0.5em 1em;
+	background: #ccc;
+	color: white;
+	text-decoration: none;
+	opacity: 0;
+	transition: opacity 0.3s ease-out;
+}
+
+.intro .more {
+	opacity: 1;
+}
+
+.explained nav .more {
+	opacity: 1;
+}
+
+.media-box {
+	text-align: center;
+	display: flex;
+	flex: 2 0 0;
+	align-items: flex-end;
+	justify-content: center;
+	/*background: orange;*/
+}
+
+.media-box--stacked {
 	position: relative;
 }
 
-.image-container img {
-	display: inline-block;
-	height: 380px;
-	height: 300px;
-	width: auto;
+.stack-box {
+	position: relative;
 }
 
-.image-container--stacked img {
+.stack-box img {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.stack-box img:first-child {
+	position: relative;/* without this, box won't have with */
+}
+
+.media-box img {
+	display: inline-block;
+	width: auto;
+	height: auto;
+}
+
+.media-box--stacked img {
 	position: absolute;	
 	top: 0;
 	left: 0;
+}
+
+.body-box {
+	flex: 1 0 0;
+	/*background: yellow;*/
 }
 
 
@@ -122,12 +187,12 @@ nav .more {
 		font-style: italic;
 	}
 
-	.disclosed .explanation__lemma,
-	.disclosed .explanation__classification {
+	.explained .explanation__lemma,
+	.explained .explanation__classification {
 		color: #666;
 	}
 
-	.disclosed .explanation__description {
+	.explained .explanation__description {
 		color: inherit;
 	}
 
@@ -141,15 +206,13 @@ h2 span {
 h2 .zelfst-nw,
 h2 .bez-vnw,
 h2 .pers-vnw {
-	text-transform: uppercase;
-	/*font-size: 4.8rem;*/
+	/*text-transform: uppercase;*/
 }
 
-.disclosed h2 .zelfst-nw,
-.disclosed h2 .bez-vnw,
-.disclosed h2 .pers-vnw {
+.explained h2 .zelfst-nw,
+.explained h2 .bez-vnw,
+.explained h2 .pers-vnw {
 	text-transform: none;
-	/*font-size: 4.8rem;*/
 }
 
 /* zinsdelen zelfde tint; bez vnw lichter */
@@ -162,58 +225,83 @@ h2 .pers-vnw {
 
 
 
-.hinted .onderwerp,
-.disclosed .onderwerp {
+.explained .onderwerp {
 	color: #3a7951;/* green */
 }
 
-.hinted .lijdend-vw,
-.disclosed .lijdend-vw {
+.explained .lijdend-vw {
 	color: #5dafce;/* blue */
 }
 
-.hinted .meewerkend-vw,
-.disclosed .meewerkend-vw {
+.explained .meewerkend-vw {
 	color: #b79470;/* brown */
 }
 
-.hinted .bijw-bepaling,
-.disclosed .bijw-bepaling {
+.explained .bijw-bepaling {
 	color: #a488d1;/* purple */
+}
+
+.wrong {
+	/*color: #666;*/
+	position: relative;
+}
+
+.explained .wrong {
+	color: #666;
+}
+
+.wrong:after {
+	position: absolute;
+	top: 0.8em;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 4px solid #333;
+	transform: rotate(-9deg);
+	content: "";
+	transition: width 0.2s 0.3s linear;
+}
+
+.explained .wrong:after {
+	width: 100%;
+}
+
+.corrected {
+	font-size: 0;
+	transition: font-size 0.3s 0.6s ease-out;
+}
+
+.explained .corrected {
+	font-size: inherit;
 }
 
 
 
-.hinted img.onderwerp,
-.disclosed img.onderwerp {
+.explained img.onderwerp {
 	/* green */
 	-webkit-filter: sepia() saturate(2) hue-rotate(90deg);
 	filter: sepia() saturate(2) hue-rotate(90deg);
 }
 
-.hinted img.meewerkend-vw,
-.disclosed img.meewerkend-vw {
+.explained img.meewerkend-vw {
 	/* orange */
 	-webkit-filter: sepia() saturate(2) hue-rotate(350deg);
 	filter: sepia() saturate(2) hue-rotate(350deg);
 }
 
-.hinted img.lijdend-vw,
-.disclosed img.lijdend-vw {
+.explained img.lijdend-vw {
 	/* blue */
 	-webkit-filter: sepia() saturate(2) hue-rotate(150deg);
 	filter: sepia() saturate(2) hue-rotate(150deg);
 }
 
-.hinted img.bijw-bepaling,
-.disclosed img.bijw-bepaling {
+.explained img.bijw-bepaling {
 	/* blue */
 	-webkit-filter: sepia() saturate(2) hue-rotate(240deg);
 	filter: sepia() saturate(2) hue-rotate(240deg);
 }
 
-.hinted .bez-vnw,
-.disclosed .bez-vnw {
+.explained .bez-vnw {
 	opacity: 0.5;
 }
 
@@ -221,13 +309,13 @@ h2 .pers-vnw {
 	/*overflow: hidden;*/
 	/*max-width: 0;*/
 	transition: font-size 0.3s ease-out;
-	font-size: 0;
+	/*font-size: 0;*/
 	font-weight: normal;
 	line-height: 0.9em;
 	color: #ccc;
 }
 
-.disclosed .glue {
+.explained .glue {
 	/*max-width: 5em;*/
 	/*font-size: 2.8rem;*/
 	font-size: inherit;

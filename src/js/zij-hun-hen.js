@@ -11,14 +11,23 @@
 	* 
 	* @returns {undefined}
 	*/
-	var initDiscloseLink = function() {
-		$('#toggle--hinted').on('click', function(e) {
-			e.preventDefault();
-			$('body').toggleClass('hinted');
-		});
+	var initDiscloseLinks = function() {
 		$('#toggle--disclosed').on('click', function(e) {
 			e.preventDefault();
 			$('body').toggleClass('disclosed');
+		});
+		$('#toggle--explained').on('click', function(e) {
+			e.preventDefault();
+			$('body').toggleClass('explained');
+		});
+		$('.toggle--example').on('click', function(e) {
+			e.preventDefault();
+			var $container = $(e.currentTarget).closest('.o-content-width');
+
+			$container.addClass('disclosed');
+			setTimeout(function() {
+				$container.addClass('explained')
+			}, 2000);
 		});
 	};
 
@@ -39,6 +48,24 @@
 			$('body').scrollTop(destTop);
 		});
 	};
+
+
+	/**
+	* 
+	* @returns {undefined}
+	*/
+	var cloneElements = function() {
+		var $clone = $('.toggle-container').clone();
+
+		$('.rule').each(function() {
+			var $rule = $(this);
+			if (!$rule.next().is('.toggle-container')) {
+				$rule.after($clone);
+			}
+			$rule.append($clone);
+		});
+	};
+	
 	
 	
 
@@ -49,7 +76,8 @@
 	* @returns {undefined}
 	*/
 	var init = function() {
-		initDiscloseLink();
+		//cloneElements();
+		initDiscloseLinks();
 		// initSmoothLinks();
 	};
 
