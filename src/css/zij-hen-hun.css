@@ -136,6 +136,7 @@ nav .more {
 
 .stack-box {
 	position: relative;
+	line-height: 0;
 }
 
 .stack-box img {
@@ -226,19 +227,19 @@ h2 .pers-vnw {
 
 
 .explained .onderwerp {
-	color: #3a7951;/* green */
+	color: #015b01;/* green */
 }
 
 .explained .lijdend-vw {
-	color: #5dafce;/* blue */
+	color: #045faf;/* blue */
 }
 
 .explained .meewerkend-vw {
-	color: #b79470;/* brown */
+	color: #ca00c9;/* purple */
 }
 
 .explained .bijw-bepaling {
-	color: #a488d1;/* purple */
+	color: #ff0326;/* red */
 }
 
 .wrong {
@@ -279,26 +280,26 @@ h2 .pers-vnw {
 
 .explained img.onderwerp {
 	/* green */
-	-webkit-filter: sepia() saturate(2) hue-rotate(90deg);
-	filter: sepia() saturate(2) hue-rotate(90deg);
+	-webkit-filter: sepia() saturate(200) hue-rotate(90deg);
+	filter: sepia() saturate(200) hue-rotate(90deg);
 }
 
 .explained img.meewerkend-vw {
 	/* orange */
-	-webkit-filter: sepia() saturate(2) hue-rotate(350deg);
-	filter: sepia() saturate(2) hue-rotate(350deg);
+	-webkit-filter: sepia() saturate(200) hue-rotate(300deg);
+	filter: sepia() saturate(200) hue-rotate(300deg);
 }
 
 .explained img.lijdend-vw {
 	/* blue */
-	-webkit-filter: sepia() saturate(2) hue-rotate(150deg);
-	filter: sepia() saturate(2) hue-rotate(150deg);
+	-webkit-filter: sepia() saturate(200) hue-rotate(200deg);
+	filter: sepia() saturate(200) hue-rotate(200deg);
 }
 
 .explained img.bijw-bepaling {
 	/* blue */
-	-webkit-filter: sepia() saturate(2) hue-rotate(240deg);
-	filter: sepia() saturate(2) hue-rotate(240deg);
+	-webkit-filter: sepia() saturate(200) hue-rotate(350deg);
+	filter: sepia() saturate(200) hue-rotate(350deg);
 }
 
 .explained .bez-vnw {
