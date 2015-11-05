@@ -15,10 +15,12 @@
 		$('#toggle--disclosed').on('click', function(e) {
 			e.preventDefault();
 			$('body').toggleClass('disclosed');
+			$('.lesson').show();
 		});
 		$('#toggle--explained').on('click', function(e) {
 			e.preventDefault();
 			$('body').toggleClass('explained');
+			$('.lesson').show();
 		});
 		$('.toggle--example').on('click', function(e) {
 			e.preventDefault();
@@ -28,41 +30,6 @@
 			setTimeout(function() {
 				$container.addClass('explained')
 			}, 2000);
-		});
-	};
-
-
-	/**
-	* initialize smooth scrolling
-	* @returns {undefined}
-	*/
-	var initSmoothLinks = function() {
-		$('.more').on('click', function(e) {
-		console.log('klik');
-			e.preventDefault();
-			var $link = $(e.currentTarget),
-				href = $link.attr('href'),
-				$dest = $(href),
-				destTop = $dest.scrollTop();
-
-			$('body').scrollTop(destTop);
-		});
-	};
-
-
-	/**
-	* 
-	* @returns {undefined}
-	*/
-	var cloneElements = function() {
-		var $clone = $('.toggle-container').clone();
-
-		$('.rule').each(function() {
-			var $rule = $(this);
-			if (!$rule.next().is('.toggle-container')) {
-				$rule.after($clone);
-			}
-			$rule.append($clone);
 		});
 	};
 	
@@ -76,9 +43,7 @@
 	* @returns {undefined}
 	*/
 	var init = function() {
-		//cloneElements();
 		initDiscloseLinks();
-		// initSmoothLinks();
 	};
 
 

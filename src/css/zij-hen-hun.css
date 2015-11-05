@@ -46,8 +46,13 @@ h2.zij::first-letter {
 	letter-spacing: 0.1em;
 }
 
+.lesson {
+	display: none;
+}
+
 .rule {
 	margin: 1em auto;
+	max-width: 42em;
 	font-family: georgia, serif;
 	font-size: 2rem;
 }
@@ -79,11 +84,11 @@ h2.zij::first-letter {
 	flex-direction: row;
 	justify-content: center;
 	height: 600px;
+	height: 540px;
 }
 
 .item {
 	opacity: 0;
-	/*display: inline-block;*/
 	display: flex;
 	flex-direction: column;
 	margin: 0 2em;
@@ -106,7 +111,7 @@ nav {
 
 nav .more {
 	padding: 0.5em 1em;
-	background: #ccc;
+	background: #666;
 	color: white;
 	text-decoration: none;
 	opacity: 0;
@@ -127,11 +132,6 @@ nav .more {
 	flex: 2 0 0;
 	align-items: flex-end;
 	justify-content: center;
-	/*background: orange;*/
-}
-
-.media-box--stacked {
-	position: relative;
 }
 
 .stack-box {
@@ -155,15 +155,12 @@ nav .more {
 	height: auto;
 }
 
-.media-box--stacked img {
-	position: absolute;	
-	top: 0;
-	left: 0;
+#meewerkend-voorwerp-zonder-voorzetsel .stack-box + img {
+	margin-left: 1em;
 }
 
 .body-box {
 	flex: 1 0 0;
-	/*background: yellow;*/
 }
 
 
@@ -188,11 +185,11 @@ nav .more {
 		font-style: italic;
 	}
 
-	.explained .explanation__lemma,
 	.explained .explanation__classification {
 		color: #666;
 	}
 
+	.explained .explanation__lemma,
 	.explained .explanation__description {
 		color: inherit;
 	}
@@ -226,7 +223,8 @@ h2 .pers-vnw {
 
 
 
-.explained .onderwerp {
+.explained .onderwerp,
+.explained .zelfst-nw {
 	color: #015b01;/* green */
 }
 
@@ -239,7 +237,7 @@ h2 .pers-vnw {
 }
 
 .explained .bijw-bepaling {
-	color: #ff0326;/* red */
+	color: #ca1c03;/* red */
 }
 
 .wrong {
@@ -278,7 +276,8 @@ h2 .pers-vnw {
 
 
 
-.explained img.onderwerp {
+.explained img.onderwerp,
+.explained img.zelfst-nw {
 	/* green */
 	-webkit-filter: sepia() saturate(200) hue-rotate(90deg);
 	filter: sepia() saturate(200) hue-rotate(90deg);
@@ -298,12 +297,17 @@ h2 .pers-vnw {
 
 .explained img.bijw-bepaling {
 	/* blue */
-	-webkit-filter: sepia() saturate(200) hue-rotate(350deg);
-	filter: sepia() saturate(200) hue-rotate(350deg);
+	-webkit-filter: sepia() saturate(200) hue-rotate(390deg);
+	filter: sepia() saturate(200) hue-rotate(390deg);
 }
 
-.explained .bez-vnw {
+.explained .bez-vnw,
+.explained .bez-vnw .explanation__lemma,
+.explained .bez-vnw .explanation__description {
 	opacity: 0.5;
+}
+.explained .explanation .bez-vnw {
+	opacity: 1;
 }
 
 .glue {
