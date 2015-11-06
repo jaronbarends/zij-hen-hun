@@ -5,9 +5,9 @@
 	//define semi-globals (variables that are "global" in this file's anounymous function's scope)
 	//prefix them with sg so we can distinguish them from normal function-scope vars
 	var timer,
-		sgDiscloseDelay = 1500,//delay for disclosing next item
-		sgExplainDelay = 1500,//delay for showing explanation after disclosing item
-		sgMoreDelay = 2000;//delay for showing more-links
+		sgDiscloseDelay = 1000,//delay for disclosing next item
+		sgExplainDelay = 1000,//delay for showing explanation after disclosing item
+		sgMoreDelay = 1000;//delay for showing more-links
 
 
 
@@ -47,7 +47,6 @@
 				callback = showNextMoreLink;
 				delay = sgMoreDelay;
 			}
-			console.log(delay);
 			timer = setTimeout(callback, delay);
 
 		}, sgExplainDelay);
@@ -68,10 +67,30 @@
 
 
 	/**
-	* 
+	* initialize disclosing links
 	* @returns {undefined}
 	*/
 	var initDiscloseLinks = function() {
+		$('.toggle--example').on('click', function(e) {
+			e.preventDefault();
+
+			var $tgt = $(e.currentTarget),
+				$container = $tgt.closest('.o-content-width');
+
+			$tgt.addClass('u-is-transparent');
+			showItems($container);
+
+		});
+	};
+	
+
+
+	/**
+	* init links for debugging
+	* @returns {undefined}
+	*/
+	var initDebug = function() {
+		$('.debug-disclose-container').show();
 		$('#toggle--disclosed').on('click', function(e) {
 			e.preventDefault();
 			$('body').toggleClass('disclosed');
@@ -81,12 +100,6 @@
 			e.preventDefault();
 			$('body').toggleClass('explained');
 			$('.lesson').show();
-		});
-		$('.toggle--example').on('click', function(e) {
-			e.preventDefault();
-			var $container = $(e.currentTarget).closest('.o-content-width');
-			showItems($container);
-
 		});
 	};
 	
@@ -101,6 +114,7 @@
 	*/
 	var init = function() {
 		initDiscloseLinks();
+		//initDebug();
 	};
 
 
