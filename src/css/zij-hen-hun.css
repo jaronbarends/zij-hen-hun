@@ -122,8 +122,8 @@ a:focus {
 
 .item + .item {
 	/*overflow: hidden;*/
-	margin: 0;
-	max-width: 0;
+	/*margin: 0;
+	max-width: 0;*/
 }
 
 .item--small {
@@ -133,10 +133,10 @@ a:focus {
 .disclosed .item,
 .item.disclosed {
 	opacity: 1;
-	min-width: 20%;
+	/*min-width: 20%;
 	max-width: 25%;
-	margin: 0 2em;/* same as .item */
-	transition: all 0.5s, opacity 0.5s 0.5s;
+	margin: 0 2em;*/
+	transition: all 0.5s ease-out;
 }
 
 nav {
@@ -148,7 +148,7 @@ nav .more {
 	background: #f60;
 	color: white;
 	text-decoration: none;
-	opacity: 0;
+	opacity: 1;
 	transition: 0.3s ease-out;
 }
 
@@ -162,7 +162,7 @@ nav .more:focus {
 }
 
 .explained nav .more {
-	opacity: 1;
+	/*opacity: 1;*/
 }
 
 .media-box {
@@ -373,4 +373,8 @@ h2 .glue {
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+
+.u-is-transparent {
+	opacity: 0 !important;/* use important so this utility always has precendence */
 }

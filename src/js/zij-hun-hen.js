@@ -4,34 +4,53 @@
 
 	//define semi-globals (variables that are "global" in this file's anounymous function's scope)
 	//prefix them with sg so we can distinguish them from normal function-scope vars
-	var sgDiscloseTimer,
-		sgDiscloseDelay = 3000,//delay for disclosing next item
-		sgEplainTimer,
-		sgExplainDelay = 1000;//delay for showing explanation after disclosing item
+	var timer,
+		sgDiscloseDelay = 1500,//delay for disclosing next item
+		sgExplainDelay = 1500,//delay for showing explanation after disclosing item
+		sgMoreDelay = 2000;//delay for showing more-links
 
 
+
+	/**
+	* show the first more-link that is still hidden
+	* @returns {undefined}
+	*/
+	var showNextMoreLink = function() {
+		$('.more.u-is-transparent').first().removeClass('u-is-transparent');
+	};
+
+	
 	/**
 	* show one item
 	* @returns {undefined}
 	*/
 	var showNextItem = function($items, idx) {
 		$items = $items.not('.disclosed');
-		var $item = $items.eq(0);
+		
+		var $item = $items.eq(0),
+			callback,
+			delay;
 
 		$item.addClass('disclosed');
-		sgEplainTimer = setTimeout(function() {
+		timer = setTimeout(function() {
 			$item.addClass('explained');
+
+			$items = $items.not('.disclosed');
+
+			//determine which callback function to call
+			if ($items.length > 0) {
+				callback = function() {
+					showNextItem($items);
+				}
+				delay = sgDiscloseDelay;
+			} else {
+				callback = showNextMoreLink;
+				delay = sgMoreDelay;
+			}
+			console.log(delay);
+			timer = setTimeout(callback, delay);
+
 		}, sgExplainDelay);
-
-		$items = $items.not('.disclosed');
-
-		if ($items.length > 0) {
-			sgDiscloseTimer = setTimeout(function() {
-				showNextItem($items);
-			}, sgDiscloseDelay);
-		} else {
-			var $nav = $item.closest('.o-content-width').addClass('explained')
-		}
 
 	};
 	
@@ -88,33 +107,3 @@
 	$(document).ready(init);
 
 })(jQuery);
-
-
-/*
-zij (persoonlijk voornaamwoord)
-1
-derde persoon vrouwelijk enkelvoud: zij is rijk
-2
-derde persoon meervoud voor alle geslachten: zij zijn rijk
-- See more at: http://www.vandale.nl/opzoeken?pattern=zij&lang=nn#.Vhffxfntmko
-
-
-
-hen (persoonlijk voornaamwoord; 4e nvl mv bij zij) zie 1hun
-
-2hen (de; v; meervoud: hennen; verkleinwoord: hennetje)
-1
-vrouwelijk hoen
-- See more at: http://www.vandale.nl/opzoeken?pattern=hen&lang=nn#.Vhflsfntmko
-
-
-
-hun (persoonlijk voornaamwoord; in geschreven taal 3e, in spreektaal 3e en 4e nvl van de 3e pers mv)
-1
-ik heb het hun gegeven
-
-2hun (bezittelijk voornaamwoord)
-1
-van 1hen: dat is hun huis
-- See more at: http://www.vandale.nl/opzoeken?pattern=hun&lang=nn#.VhfmR_ntmko
-*/
