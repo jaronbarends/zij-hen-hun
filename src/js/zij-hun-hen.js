@@ -4,7 +4,48 @@
 
 	//define semi-globals (variables that are "global" in this file's anounymous function's scope)
 	//prefix them with sg so we can distinguish them from normal function-scope vars
-	//var sgSomeVar = '';
+	var sgDiscloseTimer,
+		sgDiscloseDelay = 3000,//delay for disclosing next item
+		sgEplainTimer,
+		sgExplainDelay = 1000;//delay for showing explanation after disclosing item
+
+
+	/**
+	* show one item
+	* @returns {undefined}
+	*/
+	var showNextItem = function($items, idx) {
+		$items = $items.not('.disclosed');
+		var $item = $items.eq(0);
+
+		$item.addClass('disclosed');
+		sgEplainTimer = setTimeout(function() {
+			$item.addClass('explained');
+		}, sgExplainDelay);
+
+		$items = $items.not('.disclosed');
+
+		if ($items.length > 0) {
+			sgDiscloseTimer = setTimeout(function() {
+				showNextItem($items);
+			}, sgDiscloseDelay);
+		} else {
+			var $nav = $item.closest('.o-content-width').addClass('explained')
+		}
+
+	};
+	
+
+
+	/**
+	* show items for one rule
+	* @returns {undefined}
+	*/
+	var showItems = function($container) {
+		var $items = $container.find('.item');
+		showNextItem($items);
+	};
+	
 
 
 	/**
@@ -25,11 +66,8 @@
 		$('.toggle--example').on('click', function(e) {
 			e.preventDefault();
 			var $container = $(e.currentTarget).closest('.o-content-width');
+			showItems($container);
 
-			$container.addClass('disclosed');
-			setTimeout(function() {
-				$container.addClass('explained')
-			}, 2000);
 		});
 	};
 	
