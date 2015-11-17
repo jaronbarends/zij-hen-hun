@@ -6,7 +6,7 @@
 	//prefix them with sg so we can distinguish them from normal function-scope vars
 	var timer,
 		sgDiscloseDelay = 1000,//delay for disclosing next item
-		sgExplainDelay = 2000,//delay for showing explanation after disclosing item
+		sgExplainDelay = 1000,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
 	// sgDiscloseDelay = 1;
