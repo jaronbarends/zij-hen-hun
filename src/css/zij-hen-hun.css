@@ -35,9 +35,17 @@
 
 	h1,
 	h2 {
+		margin-bottom: 0.5em;
 		color: #666;
 		font-weight: bold;
-		font-size: 4.2rem;
+		font-size: 4.8vw;
+	}
+
+	@media (min-width:875px) {
+		h1,
+		h2 {
+			font-size: 4.2rem;
+		}
 	}
 
 	h2 {
@@ -49,7 +57,7 @@
 	}
 
 	a {
-		color: #f60;
+		color: #ca1c03;
 	}
 
 	a:hover,
@@ -60,14 +68,20 @@
 /*-- End default element styling --*/
 
 
+.o-browser-width {
+	padding: 0 4%;
+}
+
 .o-browser-width:nth-child(2n+1) {
 	background: #f5f5f5;
 }
 
 .o-content-width {
+	overflow: hidden;
+	position: relative;
 	box-sizing: border-box;
 	margin: 0 auto;
-	padding: 2em 0;
+	padding: 2em 0 5em;
 	max-width: 70em;
 	min-height: 100vh;
 	text-align: center;
@@ -108,44 +122,127 @@
 		transition: opacity 0.3s ease-out;
 	}
 
+	.hun-hebben .toggle--example {
+		position: relative;
+		margin-bottom: 1em;
+	}
+
+	.hun-hebben .persistent {
+		display: inline-block;
+		margin-bottom: 1.6rem;
+		font-family: georgia, serif;
+		font-size: 2rem;
+	}
+
+	.hun-hebben .toggle--example .persistent {
+		font-family: inherit;
+		font-size: inherit;
+	}
+
+	.back-to-start {
+		color: #ccc;
+	}
+
+
 /*-- End rule per lesson --*/
 
 
 /*-- Start items --*/
 
-	.item-row {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		height: 600px;
-		height: 540px;
-	}
-
 	.item {
+		box-sizing: border-box;
 		opacity: 0;
-		display: flex;
-		flex-direction: column;
-		margin: 0 2em;
+		margin: 0 2%;
 		vertical-align: top;
 		transition: opacity 0.3s ease-out;
 	}
 
-	.item--small {
-		max-width: 13em;
+	.item--sm {
+		float: left;
+		width: 46%;
+	}
+
+	.item--sm .media-box {
+		width: 70%;
+	}
+
+	.item--md .media-box {
+		width: 75%;
+	}
+
+	/* items that have row of items underneath need separator */
+	.item--sm:nth-child(1) ,
+	.item--sm:nth-child(2),
+	.item--md:first-child:nth-last-child(2) {
+		margin-bottom: 1em;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 2em;
+	}
+
+	@media (min-width: 860px) {
+		.item--sm {
+			width: 21%;
+		}
+
+		.item--sm .media-box {
+			width: 97%;
+		}
+
+
+		.item--md:first-child:nth-last-child(2),
+		.item--md:first-child:nth-last-child(2) ~ .item--md {
+			/* only for 2 item--md's in one row */
+			float: left;
+			width: 46%;
+		}
+
+		.item--md .media-box {
+			/* when there is 1 item--md in a row */
+			width: 48%;
+		}
+
+		.item--md:first-child:nth-last-child(2) .media-box,
+		.item--md:first-child:nth-last-child(2) ~ .item--md .media-box {
+			/* only for 2 item--md's in one row */
+			width: auto;/* this is the smallest type, the others get derived from this one */
+		}
+
+
+		.item--lg .media-box {
+			width: 64%;
+		}
+
+		/* remove separator for items that had row of items underneath */
+		.item--sm:nth-child(1) ,
+		.item--sm:nth-child(2),
+		.item--md:first-child:nth-last-child(2) {
+			margin-bottom: 0;
+			border-bottom: none;
+			padding-bottom: 0;
+		}
+
 	}
 
 	.disclosed .item,
 	.item.disclosed {
 		opacity: 1;
-		transition: all 0.5s ease-out;
+		/*transition: all 0.5s ease-out;*/
 	}
 
 	.media-box {
+		margin: 0 auto;
 		text-align: center;
-		display: flex;
-		flex: 2 0 0;
-		align-items: flex-end;
+		/*display: flex;*/
+		/*flex: 2 0 0;*/
+		/*align-items: flex-end;*/
 		justify-content: center;
+	}
+
+	.media-box img {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
 	}
 
 	.stack-box {
@@ -169,20 +266,13 @@
 		height: auto;
 	}
 
-	#meewerkend-voorwerp-zonder-voorzetsel .stack-box + img {
-		margin-left: 1em;
-	}
-
-	.body-box {
-		flex: 1 0 0;
-	}
-
 	h2.zij::first-letter {
-		letter-spacing: 0.1em;
+		letter-spacing: 0.1em;/* correct kerning between Z and I */
 	}
 
 	.explanation {
 		margin: 0 auto;
+		max-width: 42em;
 		text-align: left;
 		font-size: 1.4rem;
 	}
@@ -211,30 +301,27 @@
 		color: inherit;
 	}
 
+	.explanation__description .unclip {
+		display: inline-block;
+		padding: 0 0.2em 0.3em;
+		border-radius: 0.5em;
+		background: transparent;
+		color: transparent;
+		line-height: 0.7;
+		font-weight: bold;
+		text-decoration: none;
+		vertical-align: middle;
+	}
+
+	.explained .explanation__description .unclip {
+		background: rgba(0,0,0,0.15);
+		color: white;
+	}
+
 	h2 span {
 		display: inline-block;
 		white-space: nowrap;
 	}
-
-	h2 .zelfst-nw,
-	h2 .bez-vnw,
-	h2 .pers-vnw {
-		/*text-transform: uppercase;*/
-	}
-
-	.explained h2 .zelfst-nw,
-	.explained h2 .bez-vnw,
-	.explained h2 .pers-vnw {
-		/*text-transform: none;*/
-	}
-
-	/* zinsdelen zelfde tint; bez vnw lichter */
-	/*
-	.onderwerp
-	.mw-voorw
-	(.mw-voorw-met-voorz)
-	.ld-voorw*/
-
 
 
 
@@ -264,29 +351,9 @@
 		color: #666;
 	}
 
-	.wrong:after {
-		position: absolute;
-		top: 0.8em;
-		left: 0;
-		width: 0;
-		height: 0;
-		border-bottom: 4px solid #333;
-		transform: rotate(-9deg);
-		content: "";
-		transition: width 0.2s 0.3s linear;
-	}
-
-	.explained .wrong:after {
-		width: 100%;
-	}
-
 	.corrected {
 		font-size: 0;
 		transition: font-size 0.3s 0.6s ease-out;
-	}
-
-	.explained .corrected {
-		font-size: inherit;
 	}
 
 
@@ -336,7 +403,7 @@
 	}
 
 	h2 .glue {
-		font-family: "Arial narrow", "helvetica narrow";
+		font-family: "Arial narrow", "helvetica narrow", sans-serif;
 	}
 
 	.explained .glue {
@@ -349,10 +416,14 @@
 /*-- Start more links --*/
 
 	nav {
-		margin-top: 2em;
+		position: absolute;
+		bottom: 1em;
+		width: 100%;
 	}
 
 	.intro nav {
+		position: relative;
+		bottom: auto;
 		margin-top: 4em;
 	}
 
@@ -362,7 +433,7 @@
 		}
 		100% {
 			opacity: 1;
-			background: #f60;
+			background: #ca1c03;
 		}
 	}
 
@@ -373,13 +444,16 @@
 
 	nav .more,
 	.start {
-		position: relative;
 		display: inline-block;
 		padding: 0.5em 1em;
 		color: white;
 		text-decoration: none;
 		opacity: 1;
 		transition: 0.3s ease-out;
+	}
+
+	nav .more {
+		background: #ca1c03;
 	}
 
 	nav .more:after,
@@ -389,29 +463,25 @@
 		bottom: -20px;
 		margin-left: -10px;
 		border: 10px solid transparent;
-		border-top-color: #f60;
+		border-top-color: #ca1c03;
 		width: 0;
 		height: 0;
 		content: "";
 		transition: 0.3s ease-out;
 	}
 
-	nav .more {
-		background: #f60;
-	}
-
 	.start:hover,
 	.start:focus,
 	nav .more:hover,
 	nav .more:focus {
-		background: #f90;
+		background: #b91c05;
 	}
 
 	.start:hover:after,
 	.start:focus:after,
 	nav .more:hover:after,
 	nav .more:focus:after {
-		border-top-color: #f90;
+		border-top-color: #b91c05;
 	}
 
 
@@ -425,6 +495,10 @@
 		opacity: 0 !important;/* use important so this utility always has precendence */
 	}
 
+	.u-hidden {
+		display: none !important;/* use important so this utility always has precendence */
+	}
+
 /*-- End utilities --*/
 
 
@@ -435,6 +509,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
+		z-index: 1;
 	}
 
 /*-- End debugging --*/

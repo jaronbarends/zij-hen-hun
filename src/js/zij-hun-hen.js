@@ -9,6 +9,10 @@
 		sgExplainDelay = 1000,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
+	// sgDiscloseDelay = 1;
+	// sgExplainDelay = 1;
+	// sgMoreDelay = 1;
+
 
 
 	/**
@@ -77,11 +81,36 @@
 			var $tgt = $(e.currentTarget),
 				$container = $tgt.closest('.o-content-width');
 
-			$tgt.addClass('u-is-transparent');
+			if ($tgt.attr('id') !== 'toggle--hun-hebben') {
+				$tgt.addClass('u-is-transparent');
+			} else {
+				$tgt.find('.persistent').unwrap();
+			}
 			showItems($container);
 
 		});
 	};
+
+
+	/**
+	* copy and initialize verbose hun definition
+	* @returns {undefined}
+	*/
+	var initHunDefinition = function() {
+		var definition = $('#definition--hun').html(),
+			html = '(<a class="unclip" href="#">&hellip;</a><span class="clipped u-hidden">'+definition+'</span>)';
+console.log(html);
+		$('.definition--hun').html(html);
+		$('.unclip').on('click', function(e) {
+			e.preventDefault();
+			var $tgt = $(e.currentTarget),
+				$clippedElm = $tgt.siblings('.clipped');
+
+			$tgt.addClass('u-hidden');
+			$clippedElm.removeClass('u-hidden');
+		});
+	};
+	
 	
 
 
@@ -93,13 +122,16 @@
 		$('.debug-disclose-container').show();
 		$('#toggle--disclosed').on('click', function(e) {
 			e.preventDefault();
-			$('body').toggleClass('disclosed');
+			// $('body').toggleClass('disclosed');
 			$('.lesson').show();
+			$('.item').addClass('disclosed');
 		});
 		$('#toggle--explained').on('click', function(e) {
 			e.preventDefault();
-			$('body').toggleClass('explained');
+			// $('body').toggleClass('explained');
 			$('.lesson').show();
+			$('.item').addClass('disclosed explained');
+			$('.toggle--example').addClass('u-is-transparent');
 		});
 	};
 	
@@ -114,7 +146,8 @@
 	*/
 	var init = function() {
 		initDiscloseLinks();
-		//initDebug();
+		initHunDefinition();
+		initDebug();
 	};
 
 
