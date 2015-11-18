@@ -137,6 +137,12 @@
 	.hun-hebben .toggle--example .persistent {
 		font-family: inherit;
 		font-size: inherit;
+		text-decoration: underline;/* somehow doesn't inherit from a */
+	}
+
+	.hun-hebben .toggle--example:hover .persistent,
+	.hun-hebben .toggle--example:focus .persistent {
+		text-decoration: none;
 	}
 
 	.back-to-start {
@@ -271,6 +277,23 @@
 		letter-spacing: 0.1em;/* correct kerning between Z and I */
 	}
 
+	.example--secondary {
+		margin-top: -1em;
+	}
+
+	.toggle--explanation {
+		position: relative;
+		z-index: 1;/* make it appear on top of spans */
+		display: block;
+		margin-bottom: -1em;
+		height: 1em;
+		transition: all 0.3s ease-out;
+	}
+
+	.explained .toggle--explanation {
+		font-size: 0;
+	}
+
 	.explanation {
 		margin: 0 auto;
 		max-width: 42em;
@@ -400,7 +423,7 @@
 		/*font-size: 0;*/
 		font-weight: normal;
 		line-height: 0.9em;
-		color: #ccc;
+		color: inherit;
 	}
 
 	h2 .glue {
@@ -409,6 +432,7 @@
 
 	.explained .glue {
 		font-size: inherit;
+		color: #ccc;
 	}
 
 /*-- End items --*/

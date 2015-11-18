@@ -5,12 +5,12 @@
 	//define semi-globals (variables that are "global" in this file's anounymous function's scope)
 	//prefix them with sg so we can distinguish them from normal function-scope vars
 	var timer,
-		sgDiscloseDelay = 1000,//delay for disclosing next item
-		sgExplainDelay = 1000,//delay for showing explanation after disclosing item
+		sgDefaultDiscloseDelay = 1000,//delay for disclosing next item
+		sgDefaultExplanationDelay = 1000,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
-	// sgDiscloseDelay = 1;
-	// sgExplainDelay = 1;
+	// sgDefaultDiscloseDelay = 1;
+	// sgDefaultExplanationDelay = 1;
 	// sgMoreDelay = 1;
 
 
@@ -23,37 +23,61 @@
 		$('.more.u-is-transparent').first().removeClass('u-is-transparent');
 	};
 
+
+	/**
+	* explain an item, and set timer for next item or lesson
+	* @returns {undefined}
+	*/
+	var explainItem = function($item) {
+
+		// show current item's explanation
+		$item.addClass('explained');
+
+		// determine what to do next: show next item, or link to next rule
+		var $items = $item.siblings('.item').not('.disclosed'),
+			callback,
+			delay;
+
+		//each possibility has its own callback function; determine which one sto call
+		if ($items.length > 0) {
+			callback = function() {
+				showNextItem($items);
+			};
+			delay = parseInt($item.attr('data-disclose-next-delay'), 10) || sgDefaultDiscloseDelay;
+		} else {
+			callback = showNextMoreLink;
+			delay = sgMoreDelay;
+		}
+
+		timer = setTimeout(callback, delay);
+	};
+	
+
 	
 	/**
 	* show one item
 	* @returns {undefined}
 	*/
-	var showNextItem = function($items, idx) {
+	var showNextItem = function($items) {
 		$items = $items.not('.disclosed');
 		
-		var $item = $items.eq(0),
+		var $item = $items.eq(0),//first undisclosed item
 			callback,
 			delay;
 
 		$item.addClass('disclosed');
-		timer = setTimeout(function() {
-			$item.addClass('explained');
 
-			$items = $items.not('.disclosed');
+		// check if this item's explanation has to be shown automatically
+		var autoExplain = $item.attr('data-auto-explain') === 'true',
+			explanationDelay = parseInt($item.attr('data-explanation-delay'), 10) || sgDefaultExplanationDelay;// set to 0 if NaN
+			// discloseNextDelay = parseInt($item.attr('data-disclose-next-delay'), 10) || sgDefaultDiscloseDelay;
 
-			//determine which callback function to call
-			if ($items.length > 0) {
-				callback = function() {
-					showNextItem($items);
-				}
-				delay = sgDiscloseDelay;
-			} else {
-				callback = showNextMoreLink;
-				delay = sgMoreDelay;
-			}
-			timer = setTimeout(callback, delay);
-
-		}, sgExplainDelay);
+		if (autoExplain) {
+			// call timer
+			timer = setTimeout(function() {
+				explainItem($item);
+			}, explanationDelay);
+		}
 
 	};
 	
@@ -92,6 +116,31 @@
 	};
 
 
+
+
+	/**
+	* 
+	* @returns {undefined}
+	*/
+	var showNextExplanation = function(e) {
+		e.preventDefault();
+		var $tgt = $(e.currentTarget),
+			$item = $tgt.closest('.item');
+
+		 explainItem($item);
+	};
+	
+
+	/**
+	* initialize links for explaining an item
+	* @returns {undefined}
+	*/
+	var initExplanationLinks = function() {
+		$('.toggle--explanation').on('click', showNextExplanation);
+	};
+
+
+
 	/**
 	* copy and initialize verbose hun definition
 	* @returns {undefined}
@@ -99,7 +148,6 @@
 	var initHunDefinition = function() {
 		var definition = $('#definition--hun').html(),
 			html = '(<a class="unclip" href="#">&hellip;</a><span class="clipped u-hidden">'+definition+'</span>)';
-console.log(html);
 		$('.definition--hun').html(html);
 		$('.unclip').on('click', function(e) {
 			e.preventDefault();
@@ -146,6 +194,7 @@ console.log(html);
 	*/
 	var init = function() {
 		initDiscloseLinks();
+		initExplanationLinks();
 		initHunDefinition();
 		initDebug();
 	};
