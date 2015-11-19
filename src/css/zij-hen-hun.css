@@ -57,7 +57,7 @@
 	}
 
 	a {
-		color: #ca1c03;
+		color: #045faf;/* blue */
 	}
 
 	a:hover,
@@ -82,9 +82,21 @@
 	box-sizing: border-box;
 	margin: 0 auto;
 	padding: 2em 0 5em;
-	max-width: 70em;
+	max-width: 55em;
 	min-height: 100vh;
 	text-align: center;
+}
+
+.o-browser-width.hun-hebben {
+	/*background-image: linear-gradient(0, #666 8em, #fff 0);*/
+	position: relative;
+	border-bottom: 10vh solid #666;
+}
+
+.hun-hebben .o-content-width {
+	position: static;/* so we can position nav relative to browser-width */
+	overflow: visible;/* doesn't have any floating elements */
+	min-height: 90vh;
 }
 
 .lesson {
@@ -111,7 +123,8 @@
 
 	.toggle-container {
 		position: relative;
-		animation: after-intro-link-animation 3s;
+		/*animation: after-intro-link-animation 3s;*/
+		animation: after-intro-link-animation 1.5s;
 	}
 
 	.toggle--example {
@@ -291,7 +304,7 @@
 	}
 
 	.explained .toggle--explanation {
-		font-size: 0;
+		color: transparent;
 	}
 
 	.explanation {
@@ -452,61 +465,76 @@
 		margin-top: 4em;
 	}
 
+	.hun-hebben nav {
+		bottom: -3em;
+		left: 50%;
+		margin-left: -10em;
+		width: auto;
+	}
+
 	@keyframes start-link-animation {
 		0%, 60% {
 			opacity: 0;
 		}
 		100% {
 			opacity: 1;
-			background: #ca1c03;
+			background: #045faf;/* blue */
 		}
 	}
 
-	.start {
-		animation: start-link-animation 1.5s forwards;
-		background: inherit;
-	}
-
-	nav .more,
-	.start {
+	.more {
 		display: inline-block;
 		padding: 0.5em 1em;
 		color: white;
 		text-decoration: none;
 		opacity: 1;
+		background: #045faf;/* blue */
 		transition: 0.3s ease-out;
 	}
 
-	nav .more {
-		background: #ca1c03;
+	.start {
+		/*animation: start-link-animation 1.5s forwards;*/
 	}
 
-	nav .more:after,
-	.start:after {
+	.more:after {
 		position: absolute;
 		left: 50%;
 		bottom: -20px;
 		margin-left: -10px;
 		border: 10px solid transparent;
-		border-top-color: #ca1c03;
+		border-top-color: #045faf;/* blue */;
 		width: 0;
 		height: 0;
 		content: "";
-		transition: 0.3s ease-out;
 	}
 
-	.start:hover,
-	.start:focus,
-	nav .more:hover,
-	nav .more:focus {
-		background: #b91c05;
+	.more:hover,
+	.more:focus {
+		/*background: blue;*/
+		opacity: 0.75;
+	}
+	.more:hover:after,
+	.more:focus:after {
+		/*border-top-color: blue;*/
 	}
 
-	.start:hover:after,
-	.start:focus:after,
-	nav .more:hover:after,
-	nav .more:focus:after {
-		border-top-color: #b91c05;
+
+	.theme-green .more {
+		background: #015b01;/* green */
+	}
+
+	.theme-green .more:after {
+		border-top-color: #015b01;/* green */
+	}
+
+	.theme-green .more:hover,
+	.theme-green .more:focus {
+		background: green;
+	}
+
+	.theme-green .more:hover:after,
+	.theme-green .more:focus:after {
+		border-top-color: green;
 	}
 
 

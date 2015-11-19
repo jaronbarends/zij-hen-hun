@@ -6,7 +6,7 @@
 	//prefix them with sg so we can distinguish them from normal function-scope vars
 	var timer,
 		sgDefaultDiscloseDelay = 1000,//delay for disclosing next item
-		sgDefaultExplanationDelay = 1000,//delay for showing explanation after disclosing item
+		sgDefaultExplanationDelay = 700,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
 	// sgDefaultDiscloseDelay = 1;
@@ -20,7 +20,7 @@
 	* @returns {undefined}
 	*/
 	var showNextMoreLink = function() {
-		$('.more.u-is-transparent').first().removeClass('u-is-transparent');
+		$('nav .u-is-transparent').first().removeClass('u-is-transparent');
 	};
 
 
@@ -196,7 +196,7 @@
 		initDiscloseLinks();
 		initExplanationLinks();
 		initHunDefinition();
-		initDebug();
+		//initDebug();
 	};
 
 
