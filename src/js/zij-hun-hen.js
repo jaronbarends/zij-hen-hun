@@ -9,9 +9,9 @@
 		sgDefaultExplanationDelay = 700,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
-	sgDefaultDiscloseDelay = 1;
-	sgDefaultExplanationDelay = 1;
-	sgMoreDelay = 1;
+	// sgDefaultDiscloseDelay = 1;
+	// sgDefaultExplanationDelay = 1;
+	// sgMoreDelay = 1;
 
 
 
@@ -228,6 +228,20 @@
 	
 	
 	
+	/**
+	* hide address bar on mobile
+	* @returns {undefined}
+	*/
+	var hideAddressbar = function() {
+		window.addEventListener("load",function() {
+			// Set a timeout...
+			setTimeout(function(){
+				// Hide the address bar!
+				window.scrollTo(0, 1);
+			}, 0);
+		});
+	};
+	
 
 
 	/**
@@ -240,10 +254,19 @@
 		initDiscloseLinks();
 		initExplanationLinks();
 		initHunDefinition();
+		hideAddressbar();
 		//initDebug();
 	};
 
 
 	$(document).ready(init);
+
+	window.addEventListener("load",function() {
+		// Set a timeout...
+		setTimeout(function(){
+			// Hide the address bar!
+			window.scrollTo(0, 1);
+		}, 0);
+	});
 
 })(jQuery);
