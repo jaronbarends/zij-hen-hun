@@ -9,11 +9,44 @@
 		sgDefaultExplanationDelay = 700,//delay for showing explanation after disclosing item
 		sgMoreDelay = 1000;//delay for showing more-links
 
-	// sgDefaultDiscloseDelay = 1;
-	// sgDefaultExplanationDelay = 1;
-	// sgMoreDelay = 1;
+	sgDefaultDiscloseDelay = 1;
+	sgDefaultExplanationDelay = 1;
+	sgMoreDelay = 1;
 
 
+
+	/**
+	* show lesson content
+	* @returns {undefined}
+	*/
+	var startLesson = function(evt) {
+		evt.preventDefault();
+		var $tgt = $(evt.currentTarget),
+			href = $tgt.attr('href'),
+			$destination = $(href),
+			$container;
+
+		if ($destination.length) {
+			$destination.show(0);
+
+			if (href !== '#hun-hebben') {
+				$container = $destination.find('.o-content-width');
+				setTimeout(function() {
+					discloseHandler($container);
+				}, sgDefaultDiscloseDelay);
+			}
+		}
+	};
+	
+
+	/**
+	* make more-links reveal content
+	* @returns {undefined}
+	*/
+	var initMoreLinks = function() {
+		$('.more').on('click', startLesson);
+	};
+	
 
 	/**
 	* show the first more-link that is still hidden
@@ -91,6 +124,16 @@
 		var $items = $container.find('.item');
 		showNextItem($items);
 	};
+
+
+	/**
+	* disclose items in container
+	* @returns {undefined}
+	*/
+	var discloseHandler = function($container) {
+		showItems($container);
+	};
+	
 	
 
 
@@ -193,6 +236,7 @@
 	* @returns {undefined}
 	*/
 	var init = function() {
+		initMoreLinks();
 		initDiscloseLinks();
 		initExplanationLinks();
 		initHunDefinition();

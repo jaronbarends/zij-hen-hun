@@ -14,18 +14,18 @@
 
 				if ($target.length) {
 					//Prevent page load
-					$target.show(0);
 					event.preventDefault();
 					
 					//Calculate distance between target offset and current scroll offset, for animation timing (distance *  0.6 = time in ms).
-					var scrollTimer = (Math.abs(($(window).scrollTop()) - $target.offset().top) * 0.6);
-					
+					var scrollDuration = (Math.abs(($(window).scrollTop()) - $target.offset().top) * 0.6);
+					scrollDuration = Math.min(scrollDuration, 500);
+
 					//Stop running animations to prevent stacking, start a new scrolling animation.
 					$('html,body').stop().animate(
 						{scrollTop: $target.offset().top}, 
-						scrollTimer
+						scrollDuration
 					);
-					
+
 					//Prevent page load (Firefox)
 					return false;
 				}
