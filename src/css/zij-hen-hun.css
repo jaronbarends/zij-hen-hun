@@ -81,7 +81,7 @@
 	position: relative;
 	box-sizing: border-box;
 	margin: 0 auto;
-	padding: 2em 0 5em;
+	padding: 2em 0 6em;
 	max-width: 55em;
 	min-height: 100vh;
 	text-align: center;
@@ -455,7 +455,7 @@
 
 	nav {
 		position: absolute;
-		bottom: 1em;
+		bottom: 2.5em;
 		width: 100%;
 	}
 
