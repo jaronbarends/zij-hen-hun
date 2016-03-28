@@ -241,6 +241,26 @@
 			}, 0);
 		});
 	};
+
+
+	/**
+	* start the app
+	* @returns {undefined}
+	*/
+	var startApp = function() {
+		$('#loading').addClass('done');
+	};
+	
+
+
+	/**
+	* initialize stuff for external image loading
+	* @returns {undefined}
+	*/
+	var initLoading = function() {
+		$(window).on('load', startApp);
+	};
+	
 	
 
 
@@ -250,6 +270,7 @@
 	* @returns {undefined}
 	*/
 	var init = function() {
+		initLoading();
 		initMoreLinks();
 		initDiscloseLinks();
 		initExplanationLinks();
