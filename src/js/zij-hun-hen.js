@@ -244,6 +244,18 @@
 
 
 	/**
+	* hide toggle behaviour for footer
+	* @returns {undefined}
+	*/
+	var initFooter = function() {
+		$('.toggle--footer').on('click', function() {
+			$('#main-footer').addClass('disclosed');
+		});
+	};
+	
+
+
+	/**
 	* start the app
 	* @returns {undefined}
 	*/
@@ -276,6 +288,7 @@
 		initExplanationLinks();
 		initHunDefinition();
 		hideAddressbar();
+		initFooter();
 		//initDebug();
 	};
 

@@ -182,8 +182,7 @@
 
 	.back-to-start {
 		display: inline-block;
-		margin-bottom: 0.5em;
-		/*color: #ccc;*/
+		margin-bottom: 1em;
 	}
 
 
@@ -572,36 +571,24 @@
 		background: #333;
 	}
 
+
 	.meta .o-content-width {
-		overflow: visible;
+		display: none;
+		overflow: hidden;
 		max-width: 45em;
-		min-height: auto;
+		min-height: 10vh;
+		max-height: 10vh;
 		color: rgba(255,255,255,0.5);
 	}
 
-	/*-- Start add-this --*/
+	.hun-hebben[style]  + .meta .o-content-width {
+		display: block;
+	}
 
-		.addthis_sharing_toolbox {
-			margin: -3em 0 1em;
-		}
-
-		.at-share-btn {
-			/*opacity: 0.5;
-			transition: opacity 0.3s ease-out;*/
-			line-height: 1;
-			/*-webkit-filter: saturate(0);
-			filter: saturate(0);*/
-			transition: all 0.3s ease-out !important;
-		}
-
-		.at-share-btn:hover,
-		.at-share-btn:focus {
-			/*opacity: 1;*/
-			/*-webkit-filter: saturate(1);
-			filter: saturate(1);*/
-		}
-
-	/*-- End add-this --*/
+	.meta.disclosed .o-content-width {
+		overflow: visible;
+		max-height: none;
+	}
 
 	.meta a {
 		color: rgba(255,255,255,0.5);
@@ -611,6 +598,32 @@
 		font-size: 0.9em;
 		color: rgba(255, 255, 255, 0.3);
 	}
+
+	/*-- Start add-this --*/
+
+		.addthis_sharing_toolbox {
+			margin: 16vh auto 1em;
+			transition: margin 0.5s 2s ease-out;
+
+			width: 120px;
+			height: 36px;
+		}
+
+		.disclosed .addthis_sharing_toolbox {
+			margin-top: -3em;
+		}
+
+		.at-share-tbx-element .at-share-btn {
+			line-height: 1;
+			transition: all 0.1s ease-out;
+		}
+
+		.at-share-tbx-element .at-share-btn:hover,
+		.at-share-tbx-element .at-share-btn:focus {
+			transform: translateY(-0.2em);
+		}
+
+	/*-- End add-this --*/
 	
 /*-- End meta data --*/
 
