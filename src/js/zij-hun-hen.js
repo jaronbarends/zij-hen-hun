@@ -53,6 +53,7 @@
 	* @returns {undefined}
 	*/
 	var showNextMoreLink = function() {
+		// show the first .u-is-transparent - that's the one in the last lesson that's visible
 		$('nav .u-is-transparent').first().removeClass('u-is-transparent');
 	};
 

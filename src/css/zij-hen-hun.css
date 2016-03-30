@@ -110,13 +110,10 @@
 
 
 .o-browser-width.hun-hebben {
-	/*background-image: linear-gradient(0, #666 8em, #fff 0);*/
 	position: relative;
-	/*border-bottom: 10vh solid #666;*/
 }
 
 .hun-hebben .o-content-width {
-	position: static;/* so we can position nav relative to browser-width */
 	overflow: visible;/* doesn't have any floating elements */
 	min-height: 90vh;
 }
@@ -182,7 +179,7 @@
 
 	.back-to-start {
 		display: inline-block;
-		margin-bottom: 1em;
+		vertical-align: top;
 	}
 
 
@@ -489,11 +486,8 @@
 	}
 
 	.hun-hebben nav {
-		/*bottom: -3em;*/
-		bottom: 1em;
-		left: 50%;
-		margin-left: -10.5em;
-		width: auto;
+		bottom: 1.5em;
+		width: 92%;
 	}
 
 	@keyframes start-link-animation {
@@ -507,6 +501,7 @@
 	}
 
 	.more {
+		position: relative;
 		display: inline-block;
 		padding: 0.5em 1em;
 		color: white;
@@ -530,6 +525,10 @@
 		width: 0;
 		height: 0;
 		content: "";
+	}
+
+	.back-to-start:after {
+		display: none;
 	}
 
 	.more:hover,
@@ -575,10 +574,19 @@
 	.meta .o-content-width {
 		display: none;
 		overflow: hidden;
+		padding-top: 16vh;
+		padding-top: 1.5em;
 		max-width: 45em;
 		min-height: 10vh;
 		max-height: 10vh;
 		color: rgba(255,255,255,0.5);
+		opacity: 0;
+		transition: all 0.5s 2.5s ease-out;
+	}
+
+	.meta.disclosed .o-content-width {
+		padding-top: 1.5em;
+		opacity: 1;
 	}
 
 	.hun-hebben[style]  + .meta .o-content-width {
@@ -593,6 +601,10 @@
 	.meta a {
 		color: rgba(255,255,255,0.5);
 	}
+
+	.meta p {
+		margin-bottom: 0.2em;
+	}
 	
 	small {
 		font-size: 0.9em;
@@ -602,25 +614,36 @@
 	/*-- Start add-this --*/
 
 		.addthis_sharing_toolbox {
-			margin: 16vh auto 1em;
-			transition: margin 0.5s 2s ease-out;
-
-			width: 120px;
-			height: 36px;
+			display: inline-block;
+			vertical-align: top;
 		}
 
-		.disclosed .addthis_sharing_toolbox {
-			margin-top: -3em;
-		}
 
-		.at-share-tbx-element .at-share-btn {
-			line-height: 1;
-			transition: all 0.1s ease-out;
+		/* make icon-wrappers same height as more-links: those have line-height 1.5 and padding 0.5em, so 2.5em total */
+		div.at-share-tbx-element.addthis_32x32_style .at-share-btn,
+		div.at-share-tbx-element.addthis_32x32_white_style .at-share-btn {
+			/* div selector is necessary for specificity */
+			margin-top: 0;
+			margin-bottom: 0;
+			max-width: none;
+			max-height: none;
+			transition: transform 0.1s ease-out;
 		}
 
 		.at-share-tbx-element .at-share-btn:hover,
 		.at-share-tbx-element .at-share-btn:focus {
 			transform: translateY(-0.2em);
+		}
+
+		.at-icon-wrapper {
+			width: 2.5em !important;/* overrule inline style */
+			height: 2.5em !important;/* overrule inline style */
+		}
+
+		.at-icon-wrapper svg {
+			padding: 0.25em;
+			width: 2em !important;/* overrule inline style */
+			height: 2em !important;/* overrule inline style */
 		}
 
 	/*-- End add-this --*/
