@@ -179,6 +179,7 @@
 
 	.back-to-start {
 		display: inline-block;
+		margin-bottom: 0.5em;/* so social buttons have some space on narrow screens */
 		vertical-align: top;
 	}
 
@@ -476,6 +477,7 @@
 	nav {
 		position: absolute;
 		bottom: 2.5em;
+		left: 0;
 		width: 100%;
 	}
 
@@ -487,7 +489,6 @@
 
 	.hun-hebben nav {
 		bottom: 1.5em;
-		width: 92%;
 	}
 
 	@keyframes start-link-animation {
