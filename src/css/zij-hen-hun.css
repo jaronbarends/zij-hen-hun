@@ -419,26 +419,26 @@
 	.explained img.onderwerp,
 	.explained img.zelfst-nw {
 		/* green */
-		-webkit-filter: sepia() saturate(200) hue-rotate(90deg);
-		filter: sepia() saturate(200) hue-rotate(90deg);
+		-webkit-filter: sepia(1) saturate(5) hue-rotate(90deg);
+		filter: sepia(1) saturate(5) hue-rotate(90deg);
 	}
 
 	.explained img.meewerkend-vw {
-		/* orange */
-		-webkit-filter: sepia() saturate(200) hue-rotate(300deg);
-		filter: sepia() saturate(200) hue-rotate(300deg);
+		/* purple */
+		-webkit-filter: sepia(1) saturate(10) hue-rotate(250deg);
+		filter: sepia(1) saturate(10) hue-rotate(250deg);
 	}
 
 	.explained img.lijdend-vw {
 		/* blue */
-		-webkit-filter: sepia() saturate(200) hue-rotate(200deg);
-		filter: sepia() saturate(200) hue-rotate(200deg);
+		-webkit-filter: sepia(1) saturate(8) hue-rotate(160deg);
+		filter: sepia(1) saturate(8) hue-rotate(160deg);
 	}
 
 	.explained img.bijw-bepaling {
-		/* blue */
-		-webkit-filter: sepia() saturate(200) hue-rotate(390deg);
-		filter: sepia() saturate(200) hue-rotate(390deg);
+		/* red */
+		-webkit-filter: sepia(1) saturate(8) hue-rotate(340deg);
+		filter: sepia(1) saturate(8) hue-rotate(340deg);
 	}
 
 	.explained .bez-vnw,
