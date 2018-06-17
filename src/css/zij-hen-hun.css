@@ -419,25 +419,21 @@
 	.explained img.onderwerp,
 	.explained img.zelfst-nw {
 		/* green */
-		-webkit-filter: sepia(1) saturate(5) hue-rotate(90deg);
 		filter: sepia(1) saturate(5) hue-rotate(90deg);
 	}
 
 	.explained img.meewerkend-vw {
 		/* purple */
-		-webkit-filter: sepia(1) saturate(10) hue-rotate(250deg);
-		filter: sepia(1) saturate(10) hue-rotate(250deg);
+		filter: sepia(1) saturate(15) hue-rotate(280deg);
 	}
 
 	.explained img.lijdend-vw {
 		/* blue */
-		-webkit-filter: sepia(1) saturate(8) hue-rotate(160deg);
 		filter: sepia(1) saturate(8) hue-rotate(160deg);
 	}
 
 	.explained img.bijw-bepaling {
 		/* red */
-		-webkit-filter: sepia(1) saturate(8) hue-rotate(340deg);
 		filter: sepia(1) saturate(8) hue-rotate(340deg);
 	}
 
